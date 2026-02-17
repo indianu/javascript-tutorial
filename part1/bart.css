@@ -1,0 +1,127 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background: url('resources/images/home.jpg') no-repeat center center / cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contain {
+    display: grid;
+    grid-template-columns: 90px 90px 90px;
+    gap: 3px;
+    justify-items: center;
+    align-items: center;
+}
+
+.contain div {
+    padding: 35px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    outline: 6px solid white;
+    border: 2.5px solid black;
+    background: #f7d51f;
+}
+
+.head {
+    grid-row: 1;
+    grid-column: 1 / 4;
+    background: transparent !important;
+    outline: none !important;
+    border: none !important;
+    padding: 0 !important;
+    position: relative;
+    justify-self: center;
+}
+
+.head .i1, .head .i2 {
+    width: 150px;
+    display: block;
+    transition: opacity 0.23s;
+}
+
+.head .i2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.head:hover .i1 { opacity: 0; }
+.head:hover .i2 { opacity: 1; }
+
+.body {
+    background: OrangeRed !important;
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.lhand {
+    grid-row: 2;
+    grid-column: 1;
+    width: 60px !important;
+    height: 60px !important;
+    padding: 10px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.rhand {
+    grid-row: 2;
+    grid-column: 3;
+    width: 60px !important;
+    height: 60px !important;
+    padding: 10px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.pants {
+    background: RoyalBlue !important;
+    grid-row: 3;
+    grid-column: 2;
+}
+
+.lfoot {
+    grid-row: 4;
+    grid-column: 1;
+    width: 60px !important;
+    height: 60px !important;
+    padding: 10px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.rfoot {
+    grid-row: 4;
+    grid-column: 3;
+    width: 60px !important;
+    height: 60px !important;
+    padding: 10px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+audio {
+    grid-column: 1 / 4;
+    grid-row: 5;
+    width: 100%;
+    margin-top: 10px;
+}
+
+@media (min-width: 244px) and (max-width: 644px) {
+    .contain {
+        display: block;
+    }
+    .contain div {
+        width: auto !important;
+        height: auto !important;
+    }
+}

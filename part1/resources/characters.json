@@ -1,0 +1,13 @@
+[
+  {"name":"Homer Jay", "last":"Simpson", "image":"https://static.wikia.nocookie.net/simpsons/images/6/67/S34E19_Write_Off_This_Episode_-_Homer.png/revision/latest/scale-to-width-down/536?cb=20260201075614"},
+ {"name":"Marge", "last":"Simpson", "image":"https://static.wikia.nocookie.net/simpsons/images/c/c2/Profile_-_Marge_Simpson.png/revision/latest/scale-to-width-down/536?cb=20250406075030"},
+ {"name":"Bart", "last":"Simpson", "image":"https://static.wikia.nocookie.net/simpsons/images/0/0a/Profile_-_Bart_Simpson.png/revision/latest/scale-to-width-down/536?cb=20250301184943"},
+ {"name":"Lisa", "last":"Simpson", "image":"https://static.wikia.nocookie.net/simpsons/images/2/2a/S35E14_Night_of_the_Living_Wage_-_Lisa.png/revision/latest/scale-to-width-down/536?cb=20260201092206"},
+ {"name":"Maggie", "last":"Simpson", "image":"https://static.wikia.nocookie.net/simpsons/images/0/06/S26E07_Blazed_and_Confused_-_Maggie.png/revision/latest/scale-to-width-down/536?cb=20250731065704"},
+ {"name":"Abraham", "last":"Simpson", "image":"https://static.wikia.nocookie.net/simpsons/images/d/d9/Profile_-_Abe_Simpson_II.png/revision/latest/scale-to-width-down/536?cb=20250301185840"},
+ {"name":"Ned", "last":"Flanders", "image":"https://static.wikia.nocookie.net/simpsons/images/1/11/Profile_-_Ned_Flanders.png/revision/latest/scale-to-width-down/536?cb=20250330031200"},
+ {"name":"Charles Montgomery", "last":"Burns", "image":"https://static.wikia.nocookie.net/simpsons/images/c/c7/S22E11_Flaming_Moe_-_Mr._Burns.png/revision/latest/scale-to-width-down/536?cb=20250719223531"},
+ {"name":"Moe", "last":"Szyslak", "image":"https://static.wikia.nocookie.net/simpsons/images/4/4f/Profile_-_Moe_Szyslak.png/revision/latest/scale-to-width-down/536?cb=20250307004050"},
+ {"name":"Milhouse", "last":"Van Houten", "image":"https://static.wikia.nocookie.net/simpsons/images/5/59/S22E20_Homer_Scissorhands_-_Milhouse.png/revision/latest/scale-to-width-down/536?cb=20250719232847"},
+ {"name":"Apu", "last":"Nahasapeemapetilon", "image":"https://static.wikia.nocookie.net/simpsons/images/6/6e/Profile_-_Apu_Nahasapeemapetilon.png/revision/latest/scale-to-width-down/536?cb=20250307004048"}
+  ]

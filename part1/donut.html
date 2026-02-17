@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body { margin: 0; display: flex; flex-direction: column; align-items: center; padding-top: 50px; font-family: 'Comic Sans MS', cursive; background: #fefefe; }
+canvas { cursor: pointer; }
+canvas.spin { animation: rot 2s linear; }
+@keyframes rot { from { transform: rotate(0deg); } to { transform: rotate(720deg); } }
+#msg { font-size: 26px; margin-top: 20px; cursor: pointer; color: #d45500; }
+#charimg { margin-top: 15px; max-width: 300px; display: none; }
+</style>
+</head>
+<body>
+<canvas id="c" width="280" height="280"></canvas>
+<div id="msg"></div>
+<img id="charimg">
+<script>
+var cv = document.getElementById('c')
+var ctx = cv.getContext('2d')
+var cx = 140, cy = 140, R = 110, r = 42
+var spinning = false
+var cur = null
+
+function draw() {
+    ctx.clearRect(0, 0, 280, 280)
+    ctx.beginPath()
+    ctx.arc(cx, cy, R, 0, Math.PI * 2)
+    ctx.arc(cx, cy, r, 0, Math.PI * 2, true)
+    ctx.fillStyle = '#c4813d'
+    ctx.fill()
+    ctx.strokeStyle = '#222'
+    ctx.lineWidth = 2
+    ctx.stroke()
+
+    ctx.beginPath()
+    ctx.arc(cx, cy, R - 8, 0, Math.PI * 2)
+    ctx.arc(cx, cy, r + 6, 0, Math.PI * 2, true)
+    ctx.fillStyle = '#f7a0b8'
+    ctx.fill()
+
+    var cols = ['red', '#00bfff', 'yellow', '#3cb371', 'cyan', 'orange', 'white', '#ff69b4']
+    for (var i = 0; i < 35; i++) {
+        var a = Math.random() * Math.PI * 2
+        var d = r + 18 + Math.random() * (R - r - 30)
+        var sx = cx + Math.cos(a) * d
+        var sy = cy + Math.sin(a) * d
+        ctx.save()
+        ctx.translate(sx, sy)
+        ctx.rotate(Math.random() * Math.PI)
+        ctx.fillStyle = cols[Math.floor(Math.random() * cols.length)]
+        ctx.fillRect(-7, -2, 14, 4)
+        ctx.restore()
+    }
+
+    ctx.beginPath()
+    ctx.arc(cx, cy, r, 0, Math.PI * 2)
+    ctx.fillStyle = '#fefefe'
+    ctx.fill()
+    ctx.strokeStyle = '#222'
+    ctx.lineWidth = 2
+    ctx.stroke()
+}
+
+draw()
+
+cv.addEventListener('click', function() {
+    if (spinning) return
+    spinning = true
+    cv.classList.add('spin')
+})
+
+cv.addEventListener('animationend', function() {
+    cv.classList.remove('spin')
+    spinning = false
+    fetch('resources/characters.json')
+        .then(function(r) { return r.json() })
+        .then(function(data) {
+            var ch = data[Math.floor(Math.random() * data.length)]
+            cur = ch
+            document.getElementById('msg').textContent = 'Gogosi pentru ' + ch.name + ' ' + ch.last + '!'
+            document.getElementById('charimg').style.display = 'none'
+        })
+})
+
+document.getElementById('msg').addEventListener('click', function() {
+    if (!cur) return
+    var img = document.getElementById('charimg')
+    img.style.display = 'none'
+    setTimeout(function() {
+        img.src = cur.image
+        img.style.display = 'block'
+    }, 1000)
+})
+</script>
+</body>
+</html>

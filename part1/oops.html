@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body { margin: 0; background: #333; overflow: hidden; }
+#board {
+    width: 85vw;
+    height: 70vh;
+    background: #2e5e2c;
+    border: 20px solid #5a3410;
+    position: relative;
+    margin: 5vh auto;
+    overflow-y: auto;
+}
+#text {
+    color: white;
+    font-family: 'Comic Sans MS', cursive;
+    font-size: 22px;
+    padding: 20px;
+    line-height: 1.5;
+}
+#chalk {
+    position: fixed;
+    bottom: 0;
+    right: 2vw;
+    height: 45vh;
+    z-index: 10;
+    pointer-events: none;
+}
+#counter {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    color: lime;
+    font-family: monospace;
+    font-size: 22px;
+    z-index: 20;
+}
+</style>
+</head>
+<body>
+<div id="board">
+<div id="text"></div>
+</div>
+<img id="chalk" src="resources/images/chalk.png">
+<div id="counter">0</div>
+<audio id="song" src="resources/bart-song.mp3"></audio>
+<script>
+var t = document.getElementById('text')
+var c = document.getElementById('counter')
+var s = document.getElementById('song')
+var full = ''
+var pos = 0
+var timer = null
+var total = parseInt(localStorage.getItem('totalLetters')) || 0
+c.textContent = total
+
+function tick() {
+    if (pos < full.length) {
+        t.textContent += full[pos]
+        pos++
+        total++
+        localStorage.setItem('totalLetters', total)
+        c.textContent = total
+    } else {
+        clearInterval(timer)
+        timer = null
+    }
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key == 'x') {
+        var n = Math.floor(Math.random() * 16) + 10
+        full = ''
+        for (var i = 0; i < n; i++) full += 'I will not cheat in exams. '
+        pos = 0
+        t.textContent = ''
+        if (timer) clearInterval(timer)
+        timer = setInterval(tick, 300)
+    }
+    if (e.key == 'p' && timer) {
+        clearInterval(timer)
+        timer = null
+    }
+    if (e.key == 'r' && !timer && pos < full.length) {
+        timer = setInterval(tick, 300)
+    }
+    if (e.key == 's') {
+        if (timer) { clearInterval(timer); timer = null }
+        t.textContent = ''
+        full = ''
+        pos = 0
+    }
+    if (e.key == 'm') {
+        s.currentTime = 0
+        s.play()
+    }
+})
+</script>
+</body>
+</html>
